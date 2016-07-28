@@ -7,6 +7,7 @@
 
 package ee.ioc.cs.jbe.browser.detail.attributes;
 
+import org.apache.bcel.classfile.Utility;
 import org.gjt.jclasslib.structures.AttributeInfo;
 import org.gjt.jclasslib.util.ExtendedJLabel;
 
@@ -28,7 +29,6 @@ public class GenericAttributeDetailPane extends FixedListDetailPane {
     
     private ExtendedJLabel lblNameIndex;
     private ExtendedJLabel lblLength;
-    private ExtendedJLabel lblContent;
     
     /**
         Constructor.
@@ -46,9 +46,6 @@ public class GenericAttributeDetailPane extends FixedListDetailPane {
 
         addDetailPaneEntry(normalLabel("Attribute length:"),
                            lblLength = highlightLabel());
-    
-        addDetailPaneEntry(normalLabel("Attribute bytes:"),
-                           lblContent = highlightLabel());
     }
 
     public void show(TreePath treePath) {
@@ -60,8 +57,6 @@ public class GenericAttributeDetailPane extends FixedListDetailPane {
                               attribute.getAttributeNameIndex());
         
         lblLength.setText(attribute.getAttributeLength());
-
-		lblContent.setText("Hello");
 
         super.show(treePath);
     }

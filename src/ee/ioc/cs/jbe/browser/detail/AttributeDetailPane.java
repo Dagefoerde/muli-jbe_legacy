@@ -8,6 +8,7 @@
 package ee.ioc.cs.jbe.browser.detail;
 
 import org.gjt.jclasslib.structures.AttributeInfo;
+import org.gjt.jclasslib.structures.InvalidByteCodeException;
 import org.gjt.jclasslib.structures.attributes.*;
 
 import ee.ioc.cs.jbe.browser.AbstractDetailPane;
@@ -57,6 +58,7 @@ public class AttributeDetailPane extends AbstractDetailPane  {
     private static final String SCREEN_RUNTIME_ANNOTATIONS = "RuntimeAnnotations";
 
     private static final String SCREEN_ANNOTATION_DEFAULT = "AnnotationDefault";
+    private static final String SCREEN_FREE_VARIABLES = "FreeVariables";
 
     private HashMap attributeTypeToDetailPane;
 
@@ -123,6 +125,12 @@ public class AttributeDetailPane extends AbstractDetailPane  {
             paneName = SCREEN_RUNTIME_ANNOTATIONS;
         } else if (attribute instanceof AnnotationDefaultAttribute) {
             paneName = SCREEN_ANNOTATION_DEFAULT;
+        } else try {
+            if (attribute.getName().equals("FreeVariables")) {
+                paneName = SCREEN_FREE_VARIABLES;
+            }
+        } catch (InvalidByteCodeException e) {
+
         }
 
         CardLayout layout = (CardLayout) specificInfoPane.getLayout();
@@ -203,6 +211,9 @@ public class AttributeDetailPane extends AbstractDetailPane  {
 
         addScreen(new AnnotationDefaultAttributeDetailPane(services),
                 SCREEN_ANNOTATION_DEFAULT);
+
+        addScreen(new FreeVariablesAttributeDetailPane(services),
+                SCREEN_FREE_VARIABLES);
     }
 
     private void addScreen(AbstractDetailPane detailPane, String name) {
