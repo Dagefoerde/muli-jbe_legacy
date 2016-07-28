@@ -28,6 +28,7 @@ public class GenericAttributeDetailPane extends FixedListDetailPane {
     
     private ExtendedJLabel lblNameIndex;
     private ExtendedJLabel lblLength;
+    private ExtendedJLabel lblContent;
     
     /**
         Constructor.
@@ -46,6 +47,8 @@ public class GenericAttributeDetailPane extends FixedListDetailPane {
         addDetailPaneEntry(normalLabel("Attribute length:"),
                            lblLength = highlightLabel());
     
+        addDetailPaneEntry(normalLabel("Attribute bytes:"),
+                           lblContent = highlightLabel());
     }
 
     public void show(TreePath treePath) {
@@ -58,6 +61,7 @@ public class GenericAttributeDetailPane extends FixedListDetailPane {
         
         lblLength.setText(attribute.getAttributeLength());
 
+		lblContent.setText("Hello");
 
         super.show(treePath);
     }
