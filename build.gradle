@@ -1,0 +1,17 @@
+apply plugin: "java"
+apply plugin: "application"
+
+mainClassName = "ee.ioc.cs.jbe.browser.BrowserApplication"
+
+sourceSets {
+    main {
+        java {
+            srcDir "src"
+        }
+
+        resources {
+            srcDir "src"
+            exclude '**/*.java'
+        }
+    }
+}
