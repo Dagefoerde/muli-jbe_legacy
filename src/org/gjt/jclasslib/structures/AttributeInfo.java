@@ -6,6 +6,7 @@ version 2 of the license, or (at your option) any later version.
 */
 package org.gjt.jclasslib.structures;
 
+import de.wwu.muli.attributes.FreeVariablesAttribute;
 import org.gjt.jclasslib.structures.attributes.*;
 import org.gjt.jclasslib.structures.constants.ConstantUtf8Info;
 
@@ -109,6 +110,9 @@ public class AttributeInfo extends AbstractStructureWithAttributes {
 
             } else if (AnnotationDefaultAttribute.ATTRIBUTE_NAME.equals(attributeName)) {
                 attributeInfo = new AnnotationDefaultAttribute();
+
+            } else if (FreeVariablesAttribute.ATTRIBUTE_NAME.equals(attributeName)) {
+                attributeInfo = new FreeVariablesAttribute();
 
             } else {
                 attributeInfo = new AttributeInfo(attributeLength);

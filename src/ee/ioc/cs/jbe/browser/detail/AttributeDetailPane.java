@@ -7,6 +7,7 @@
 
 package ee.ioc.cs.jbe.browser.detail;
 
+import de.wwu.muli.detailpane.FreeVariablesAttributeDetailTablePane;
 import org.gjt.jclasslib.structures.AttributeInfo;
 import org.gjt.jclasslib.structures.InvalidByteCodeException;
 import org.gjt.jclasslib.structures.attributes.*;
@@ -212,7 +213,7 @@ public class AttributeDetailPane extends AbstractDetailPane  {
         addScreen(new AnnotationDefaultAttributeDetailPane(services),
                 SCREEN_ANNOTATION_DEFAULT);
 
-        addScreen(new FreeVariablesAttributeDetailPane(services),
+        addScreen(new FreeVariablesAttributeDetailTablePane(services),
                 SCREEN_FREE_VARIABLES);
     }
 
